@@ -2,7 +2,18 @@ import { cn } from '@/lib/utils';
 import { Button, ButtonProps } from '@components/ui/button';
 import { addToStringNumber, clear, evaluate, removeLastChar } from '@store/digitSlice';
 import { useAppDispatch } from '@store/hooks';
-import { useEffect } from 'react';
+import {
+	ChevronUp,
+	Divide,
+	Dot,
+	Equal,
+	Minus,
+	Percent,
+	Plus,
+	Undo,
+	X,
+} from 'lucide-react';
+import { ReactNode, useEffect } from 'react';
 
 export default function DigitBoard() {
 	const dispatch = useAppDispatch();
@@ -37,35 +48,37 @@ export default function DigitBoard() {
 				AC
 			</OperatorButton>
 			<OperatorButton value='%' className='text-red-400'>
-				%
+				<Percent />
 			</OperatorButton>
 			<OperatorButton value='/' className='text-red-400'>
-				/
+				<Divide />
 			</OperatorButton>
 			<OperatorButton value='^' className='text-red-400'>
-				&radic;
+				<ChevronUp />
 			</OperatorButton>
 			<DigitButton value='7'>7</DigitButton>
 			<DigitButton value='8'>8</DigitButton>
 			<DigitButton value='9'>9</DigitButton>
 			<OperatorButton value='*' className='text-green-400'>
-				x
+				<X />
 			</OperatorButton>
 			<DigitButton value='4'>4</DigitButton>
 			<DigitButton value='5'>5</DigitButton>
 			<DigitButton value='6'>6</DigitButton>
 			<OperatorButton value='-' className='text-green-400'>
-				-
+				<Minus />
 			</OperatorButton>
 			<DigitButton value='1'>1</DigitButton>
 			<DigitButton value='2'>2</DigitButton>
 			<DigitButton value='3'>3</DigitButton>
 			<OperatorButton value='+' className='text-green-400'>
-				+
+				<Plus />
 			</OperatorButton>
 			<UndoButton />
 			<DigitButton value='0'>0</DigitButton>
-			<DigitButton value='.'>.</DigitButton>
+			<DigitButton value='.'>
+				<Dot />
+			</DigitButton>
 			<OperatorButton
 				value='='
 				className='text-green-400'
@@ -73,13 +86,13 @@ export default function DigitBoard() {
 					dispatch(evaluate());
 				}}
 			>
-				=
+				<Equal />
 			</OperatorButton>
 		</div>
 	);
 }
 
-function DigitButton(props: { children: string; value: string }) {
+function DigitButton(props: { children: ReactNode; value: string }) {
 	const dispatch = useAppDispatch();
 	const handleClick = () => {
 		dispatch(addToStringNumber(props.value));
@@ -87,13 +100,16 @@ function DigitButton(props: { children: string; value: string }) {
 	};
 
 	return (
-		<Button className='size-14 bg-gray-900/25' onClick={handleClick}>
+		<Button
+			className='size-14 bg-gray-900/25 active:bg-gray-900/50'
+			onClick={handleClick}
+		>
 			{props.children}
 		</Button>
 	);
 }
 
-function OperatorButton(props: { children: string; value: string } & ButtonProps) {
+function OperatorButton(props: { children: ReactNode; value: string } & ButtonProps) {
 	const dispatch = useAppDispatch();
 	const handleClick = () => {
 		dispatch(addToStringNumber(props.value));
@@ -121,7 +137,7 @@ function UndoButton() {
 	};
 	return (
 		<Button onClick={handleClick} className='size-14 bg-gray-900/25'>
-			bsc
+			<Undo />
 		</Button>
 	);
 }
