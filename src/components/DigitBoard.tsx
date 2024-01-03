@@ -32,7 +32,7 @@ export default function DigitBoard() {
 		};
 	}, [dispatch]);
 	return (
-		<div className='grid grid-cols-4 gap-5 p-5 pt-8 bg-gray-800 rounded-t-3xl'>
+		<div className='grid flex-shrink-0 grid-cols-4 gap-5 p-5 pt-8 bg-gray-800 rounded-t-3xl'>
 			<OperatorButton value='AC' className='text-red-400'>
 				AC
 			</OperatorButton>

@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 export default function DisplayBoard() {
 	return (
-		<div className='flex flex-col gap-4 px-4 py-4 text-right text-white'>
+		<div className='flex flex-col flex-grow gap-4 px-4 py-4 text-right text-white place-content-end'>
 			<Equation />
 			<Evaluation />
 		</div>
