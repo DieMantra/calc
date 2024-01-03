@@ -6,7 +6,7 @@ export default function Board() {
 	return (
 		<div
 			className={cn(
-				'max-w-[376px] max-h-dvh sm:max-h-[700px] w-full flex flex-col h-full',
+				'max-w-[376px] sm:max-h-[700px] w-full flex flex-col h-full',
 				'relative bg-slate-950 z-10',
 				'sm:rounded-3xl shadow-2xl'
 			)}
